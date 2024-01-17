@@ -34,7 +34,10 @@ void swap(stack_t **stack, unsigned int line_number)
 
 	tmp = *stack;
 	if (!tmp || ! tmp->next)
+	{
 		exiterr(stack, line_number, "can't swap, stack too short");
+		return;
+	}
 	tmp->prev = tmp->next;
 	tmp->next = tmp->next->next;
 	
@@ -55,7 +58,18 @@ void swap(stack_t **stack, unsigned int line_number)
  */
 void add(stack_t **stack, unsigned int line_number)
 {
-	printf("Sum up top 2 stack elt\n");
+	stack_t *tmp;
+	int sum;
+
+	tmp = *stack;
+	if (!tmp || ! tmp->next)
+	{
+		exiterr(stack, line_number, "can't add, stack too short");
+		return;
+	}
+	sum = tmp->n + tmp->next->n;
+	pop(stack, line_number);
+	(*stack)->n = sum;
 }
 
 /**

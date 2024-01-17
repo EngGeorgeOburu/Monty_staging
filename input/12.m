@@ -4,4 +4,8 @@ push 3
 pall
 add
 pall
+add
+pall int
+add
+pall
 

@@ -12,7 +12,6 @@ int get_inputs(FILE *stream, stack_t **stack)
 	ssize_t nread;
 	char *buffer = NULL, **toks;
 	unsigned int line_number = 1;
-	int status = 0;
 
 	do {
 		nread = getline(&buffer, &size, stream);
@@ -22,10 +21,10 @@ int get_inputs(FILE *stream, stack_t **stack)
 			toks = _strtok(buffer, nread + 1, " \n\t");
 			if (toks && *toks)
 			{
-				status = runcmd(toks, line_number, stack);
+				runcmd(toks, line_number, stack);
+				free_toks(toks);
 				if (status != 0)
 				{
-					free_toks(toks);
 					break;
 				}
 			}
@@ -33,7 +32,7 @@ int get_inputs(FILE *stream, stack_t **stack)
 		}
 		else if(nread < 0 && !hasred)
 		{
-			free(buffer);
+			//free(buffer);
 			exiterr(stack, line_number, "Failed to read instrucation");
 		}
 	} while (nread != -1);

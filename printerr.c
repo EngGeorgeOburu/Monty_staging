@@ -22,7 +22,9 @@ int printerr(const char *msg, int status)
  */
 void exiterr(stack_t **stack, unsigned int line_number, const char *msg)
 {
-	free_stack(*stack);
+	//free_stack(*stack);
 	dprintf(STDERR_FILENO, "L%u: %s\n", line_number, msg);
-	exit(EXIT_FAILURE);
+	//fclose(stream);
+	//exit(EXIT_FAILURE);
+	status = 1;
 }

@@ -1,5 +1,6 @@
 #include "monty.h"
 
+int status;
 /**
  * main - entry point of the monty interpretor
  * @argc: argument count
@@ -8,7 +9,7 @@
  */
 int main(int argc, char **argv)
 {
-	int status;
+	status = 0;
 	stack_t *stack = NULL;
 
 	if (argc != 2)
@@ -16,7 +17,7 @@ int main(int argc, char **argv)
 		printerr("USAGE: monty file\n", 1);
 		exit(EXIT_FAILURE);
 	}
-	status = execcmd(argv[1], &stack);
+	execcmd(argv[1], &stack);
 	free_stack(stack);
 
 	return (status);

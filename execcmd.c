@@ -8,7 +8,7 @@
  */
 int execcmd(char *filename, stack_t **stack)
 {
-	int status = 1;
+	//int status = 1;
 	FILE *stream;
 
 	stream = fopen(filename, "r");
@@ -18,10 +18,10 @@ int execcmd(char *filename, stack_t **stack)
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
 		return (status);
 	}
-	status = get_inputs(stream, stack);
+	get_inputs(stream, stack);
 	fclose(stream);
 
-	return (status);
+	return(status);
 }
 
 /**
@@ -45,7 +45,6 @@ int runcmd(char **cmd, unsigned int line_number, stack_t **stack)
 
 	if (strcmp("nop", cmd[0]) == 0 && cmd[1] == NULL)
 	{
-		free_toks(cmd);
 		return (0);
 	}
 	if (strcmp("push", cmd[0]) == 0)
@@ -59,7 +58,6 @@ int runcmd(char **cmd, unsigned int line_number, stack_t **stack)
 		{
 			if (strcmp(flist[i].opcode, cmd[0]) == 0 && cmd[1] == NULL)
 			{
-				free_toks(cmd);
 				flist[i].f(stack, line_number);
 				return (0);
 			}
@@ -67,6 +65,7 @@ int runcmd(char **cmd, unsigned int line_number, stack_t **stack)
 		}
 	}
 	dprintf(STDERR_FILENO, "L%u: unknown instruction", line_number);
+	status = 1;
 	while (cmd && *cmd)
 		dprintf(STDERR_FILENO, " %s", *cmd++);
 	printf("\n");
