@@ -1,4 +1,10 @@
 #include "monty.h"
+/**
+* swap - swaps the top element of the stack
+* @head: head of stack
+* @line_number: line number in the file
+* Return: Nothing
+*/
 void swap (stack_t **head, unsigned int line_number)
 {
 	int tmp;

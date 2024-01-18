@@ -3,6 +3,7 @@
 * pop - Removes the top element from the stack
 * @head: pointer to a pointer to the head of the stack
 * @line_number: Crurrent line number in the Monty file.
+* Return: Nothing
 */
 void pop (stack_t **head, unsigned int line_number)
 {
