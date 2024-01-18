@@ -31,7 +31,7 @@ int execcmd(char *filename, stack_t **stack)
  * @stack: head ptr to stack
  * Return: execution status
  */
-int runcmd(char **cmd, unsigned int line_number, stack_t **stack)
+int runcmd(char **cmd, unsigned int line_number, stack_t **stack, int is_stack)
 {
 	int i = 0;
 	instruction_t flist[] = {
@@ -59,7 +59,7 @@ int runcmd(char **cmd, unsigned int line_number, stack_t **stack)
 	}
 	if (strcmp("push", cmd[0]) == 0)
 	{
-		push(stack, cmd, line_number);
+		push(stack, cmd, line_number, is_stack);
 		return (0);
 	}
 	else

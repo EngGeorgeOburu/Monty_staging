@@ -74,6 +74,40 @@ int delete_node_head(stack_t **head)
 }
 
 /**
+ * add_node_end - add new node to end
+ * @head: head of a doubly linked list
+ * @n: int data to add to the node
+ * Return: new node ptr
+ */
+stack_t *add_node_end(stack_t **head, int n)
+{
+	stack_t *new_node;
+	stack_t *tmp;
+
+	new_node = malloc(sizeof(stack_t));
+	if (!new_node)
+		return (NULL);
+
+	new_node->n = n;
+	new_node->next = NULL;
+
+	tmp = *head;
+	if (tmp)
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+
+		tmp->next = new_node;
+	}
+	new_node->prev = tmp;
+
+	if (!tmp)
+		*head = new_node;
+
+	return (new_node);
+}
+
+/**
  * free_stack - free list
  * @head: head of a doubly linked list
  */

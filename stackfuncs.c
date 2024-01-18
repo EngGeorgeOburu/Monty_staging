@@ -6,16 +6,17 @@
  * @line_number: where this function is beeing called
  * Return: nothing
  */
-void push(stack_t **stack, char **cmd, unsigned int line_number)
+void push(stack_t **stack, char **cmd, unsigned int line_number, int is_stack)
 {
 	if (cmd[1] && !cmd[2])
 	{
-		add_node_head(stack, atoi(cmd[1]));
-		//free_toks(cmd);
+		if (is_stack == 0)
+			add_node_head(stack, atoi(cmd[1]));
+		else
+			add_node_end(stack, atoi(cmd[1]));
 	}
 	else
 	{
-		//free_toks(cmd);
 		exiterr(stack, line_number, "usage: push integer");
 	}
 }
@@ -28,8 +29,6 @@ void push(stack_t **stack, char **cmd, unsigned int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	//int status;
-
 	delete_node_head(stack);
 	if (0 > status)
 	{

@@ -42,6 +42,7 @@ typedef struct instruction_s
 
 /* read input file */
 int get_inputs(FILE *stream, stack_t **stack);
+int isstack(char **toks);
 
 /* util functions */
 int gettoksnum(char *line, int size, char *delim);
@@ -51,7 +52,7 @@ char *_realloc(char *ptr, int old_size, int newsize);
 
 /* parse and exec cmds */
 int execcmd(char *filename, stack_t **stack);
-int runcmd(char **cmd, unsigned int line_number, stack_t **stack);
+int runcmd(char **cmd, unsigned int line_number, stack_t **stack, int is_stack);
 
 /* str helpers */
 int _strlen(char *str);
@@ -61,7 +62,7 @@ char *_strcpy(char *dest, char *src);
 char *_strdup(char *str);
 
 /* stack functions */
-void push(stack_t **stack,char **cmd, unsigned int line_number);
+void push(stack_t **stack,char **cmd, unsigned int line_number, int is_stack);
 void pop(stack_t **stack, unsigned int line_number);
 void print_stack(stack_t **stack, unsigned int line_number);
 void print_head(stack_t **stack, unsigned int line_number);
@@ -80,6 +81,7 @@ void exiterr(stack_t **stack, unsigned int line_number, const char *msg);
 size_t print_list(stack_t *h);
 stack_t *add_node_head(stack_t **head, int n);
 int delete_node_head(stack_t **head);
+stack_t *add_node_end(stack_t **head, int n);
 
 /* monty math module */
 void add(stack_t **stack, unsigned int line_number);
