@@ -3,7 +3,7 @@
 /**
  * printerr - print error message to stderr
  * @msg: error message to be printed
- * @status: error status code
+ * @line_number: error status code
  * Return: status code of the err
  */
 int printerr(unsigned int line_number, const char *msg)
@@ -15,8 +15,8 @@ int printerr(unsigned int line_number, const char *msg)
 /**
  * exiterr - print err msg, free mem and exit
  * @stack: stack to be freed
- * @line_number - number of the line where the err occured
- * msg: error msg to print
+ * @line_number: number of the line where the err occured
+ * @msg: error msg to print
  * Return: Nothing
  */
 void exiterr(stack_t **stack, unsigned int line_number, const char *msg)

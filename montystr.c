@@ -3,7 +3,7 @@
 /**
  * pchar - read top of stack as char
  * @stack: ptr to stack
- * @line_number
+ * @line_number: number of the line where cmd found
  * Return: nothing
  */
 void pchar(stack_t **stack, unsigned int line_number)
@@ -26,7 +26,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 /**
  * pstr - read stack as string
  * @stack: ptr to stack
- * @line_number
+ * @line_number: number of the line where cmd found
  * Return: nothing
  */
 void pstr(stack_t **stack, unsigned int line_number)
@@ -55,7 +55,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 /**
  * rotr - read stack as string
  * @stack: ptr to stack
- * @line_number
+ * @line_number: number of the line where cmd found
  * Return: nothing
  */
 void rotr(stack_t **stack, unsigned int line_number)
@@ -82,7 +82,7 @@ void rotr(stack_t **stack, unsigned int line_number)
 /**
  * rotl - read stack as string
  * @stack: ptr to stack
- * @line_number
+ * @line_number: number of the line where cmd found
  * Return: nothing
  */
 void rotl(stack_t **stack, unsigned int line_number)

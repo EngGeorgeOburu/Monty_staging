@@ -33,14 +33,14 @@ void swap(stack_t **stack, unsigned int line_number)
 	stack_t *tmp;
 
 	tmp = *stack;
-	if (!tmp || ! tmp->next)
+	if (!tmp || !tmp->next)
 	{
 		exiterr(stack, line_number, "can't swap, stack too short");
 		return;
 	}
 	tmp->prev = tmp->next;
 	tmp->next = tmp->next->next;
-	
+
 	tmp->prev->prev = NULL;
 	tmp->prev->next = tmp;
 

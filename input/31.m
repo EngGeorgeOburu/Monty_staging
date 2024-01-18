@@ -1,4 +1,5 @@
-push 1
+pstr
+push 1 per
 push 2
 push 3
 push 4

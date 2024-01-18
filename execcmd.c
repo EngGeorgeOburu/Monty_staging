@@ -8,7 +8,6 @@
  */
 int execcmd(char *filename, stack_t **stack)
 {
-	//int status = 1;
 	FILE *stream;
 
 	stream = fopen(filename, "r");
@@ -21,7 +20,7 @@ int execcmd(char *filename, stack_t **stack)
 	get_inputs(stream, stack);
 	fclose(stream);
 
-	return(status);
+	return (status);
 }
 
 /**
@@ -29,34 +28,21 @@ int execcmd(char *filename, stack_t **stack)
  * @cmd: ptr to cmd and list of args
  * @line_number: line where the cmd was red
  * @stack: head ptr to stack
+ * @is_stack: check if push to stack = 0 or queue = 1
  * Return: execution status
  */
 int runcmd(char **cmd, unsigned int line_number, stack_t **stack, int is_stack)
 {
 	int i = 0;
 	instruction_t flist[] = {
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-
-		{"add", add},
-		{"sub", sub},
-		{"div", divide},
-		{"mul", mul},
-		{"mod", mod},
-
-		{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotl", rotl},
-		{"rotr", rotr},
+		{"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap},
+		{"add", add}, {"sub", sub}, {"div", divide}, {"mul", mul}, {"mod", mod},
+		{"pchar", pchar}, {"pstr", pstr}, {"rotl", rotl}, {"rotr", rotr},
 		{NULL, NULL}
 	};
 
 	if (strcmp("nop", cmd[0]) == 0 && cmd[1] == NULL)
-	{
 		return (0);
-	}
 	if (strcmp("push", cmd[0]) == 0)
 	{
 		push(stack, cmd, line_number, is_stack);
@@ -78,7 +64,7 @@ int runcmd(char **cmd, unsigned int line_number, stack_t **stack, int is_stack)
 	status = 1;
 	while (cmd && *cmd)
 		dprintf(STDERR_FILENO, " %s", *cmd++);
-	printf("\n");
+	dprintf(STDERR_FILENO, "\n");
 
 	return (1);
 }

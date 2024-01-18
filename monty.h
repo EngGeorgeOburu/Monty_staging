@@ -21,9 +21,9 @@ extern int status;
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -36,8 +36,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /* read input file */
@@ -52,7 +52,8 @@ char *_realloc(char *ptr, int old_size, int newsize);
 
 /* parse and exec cmds */
 int execcmd(char *filename, stack_t **stack);
-int runcmd(char **cmd, unsigned int line_number, stack_t **stack, int is_stack);
+int runcmd(char **cmd, unsigned int line_number, stack_t **stack,
+		int is_stack);
 
 /* str helpers */
 int _strlen(char *str);
@@ -62,7 +63,7 @@ char *_strcpy(char *dest, char *src);
 char *_strdup(char *str);
 
 /* stack functions */
-void push(stack_t **stack,char **cmd, unsigned int line_number, int is_stack);
+void push(stack_t **stack, char **cmd, unsigned int line_number, int is_stack);
 void pop(stack_t **stack, unsigned int line_number);
 void print_stack(stack_t **stack, unsigned int line_number);
 void print_head(stack_t **stack, unsigned int line_number);
@@ -95,9 +96,5 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
-
-
-
-
 
 #endif

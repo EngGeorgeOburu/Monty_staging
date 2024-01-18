@@ -12,7 +12,7 @@ void add(stack_t **stack, unsigned int line_number)
 	int sum;
 
 	tmp = *stack;
-	if (!tmp || ! tmp->next)
+	if (!tmp || !tmp->next)
 	{
 		exiterr(stack, line_number, "can't add, stack too short");
 		return;
@@ -34,7 +34,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	int res;
 
 	tmp = *stack;
-	if (!tmp || ! tmp->next)
+	if (!tmp || !tmp->next)
 	{
 		exiterr(stack, line_number, "can't sub, stack too short");
 		return;
@@ -57,7 +57,7 @@ void divide(stack_t **stack, unsigned int line_number)
 	int res;
 
 	tmp = *stack;
-	if (!tmp || ! tmp->next)
+	if (!tmp || !tmp->next)
 	{
 		exiterr(stack, line_number, "can't div, stack too short");
 		return;
@@ -86,7 +86,7 @@ void mul(stack_t **stack, unsigned int line_number)
 	int prod;
 
 	tmp = *stack;
-	if (!tmp || ! tmp->next)
+	if (!tmp || !tmp->next)
 	{
 		exiterr(stack, line_number, "can't mul, stack too short");
 		return;
@@ -109,7 +109,7 @@ void mod(stack_t **stack, unsigned int line_number)
 	int res;
 
 	tmp = *stack;
-	if (!tmp || ! tmp->next)
+	if (!tmp || !tmp->next)
 	{
 		exiterr(stack, line_number, "can't mod, stack too short");
 		return;

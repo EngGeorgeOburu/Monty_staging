@@ -3,6 +3,8 @@
 /**
  * push - push a new elt into the stack
  * @stack: ptr to ptr to the head of stack
+ * @cmd: tokenized cmd
+ * @is_stack: check if push to stack = 0 or queue = 1
  * @line_number: where this function is beeing called
  * Return: nothing
  */
@@ -30,7 +32,7 @@ void push(stack_t **stack, char **cmd, unsigned int line_number, int is_stack)
 void pop(stack_t **stack, unsigned int line_number)
 {
 	delete_node_head(stack);
-	if (0 > status)
+	if (status < 0)
 	{
 		exiterr(stack, line_number, "can't pop an empty stack");
 	}

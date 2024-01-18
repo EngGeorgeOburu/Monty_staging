@@ -2,7 +2,7 @@
 
 /**
  * get_inputs - read user inputs from stdin and parse lines
- * @fd: file descriptor to read cmds from, if any
+ * @stream: file descriptor to read cmds from, if any
  * @stack: head ptr to stack
  * Return: execution status
  */
@@ -16,20 +16,17 @@ int get_inputs(FILE *stream, stack_t **stack)
 
 	do {
 		nread = getline(&buffer, &size, stream);
-		/* if (buffer[0] == '#')
-		 *	printf("%s", buffer);
-		 */
 		if (nread >= 0 && buffer[0] != '#')
 		{
 			hasred = 1;
 			toks = _strtok(buffer, nread + 1, " \n\t");
 			tmp = isstack(toks);
-			 if (tmp >= 0)
-			 {
+			if (tmp >= 0)
+			{
 				is_stack = tmp;
 				free_toks(toks);
-			 }
-			else if(toks && *toks && tmp < 0)
+			}
+			else if (toks && *toks && tmp < 0)
 			{
 				runcmd(toks, line_number, stack, is_stack);
 				free_toks(toks);
@@ -40,7 +37,7 @@ int get_inputs(FILE *stream, stack_t **stack)
 			}
 			line_number++;
 		}
-		else if(nread < 0 && !hasred)
+		else if (nread < 0 && !hasred)
 		{
 			exiterr(stack, line_number, "Failed to read instrucation");
 		}
