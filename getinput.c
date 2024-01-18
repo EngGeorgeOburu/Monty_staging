@@ -39,7 +39,7 @@ int get_inputs(FILE *stream, stack_t **stack)
 		}
 		else if (nread < 0 && !hasred)
 		{
-			exiterr(stack, line_number, "Failed to read instrucation");
+			printerr(line_number, "Failed to read instrucation");
 		}
 	} while (nread != -1);
 	free(buffer);

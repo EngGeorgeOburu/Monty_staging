@@ -1,12 +1,14 @@
 #ifndef HEADER_MONTY
 #define HEADER_MONTY
 
+#define _POSIX_C_SOURCE 200809L
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>
-#include <string.h>
 #include <unistd.h>
+#include <string.h>
 #include <ctype.h>
+#include <fcntl.h>
 
 extern int status;
 
@@ -75,8 +77,7 @@ void pint(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 
 /* print error msg */
-int printerr(unsigned int line_number, const char *msg);
-void exiterr(stack_t **stack, unsigned int line_number, const char *msg);
+void printerr(unsigned int line_number, const char *msg);
 
 /* linked list functions */
 size_t print_list(stack_t *h);

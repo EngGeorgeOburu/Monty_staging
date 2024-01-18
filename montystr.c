@@ -14,7 +14,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 		return;
 	}
 
-	if (isascii((*stack)->n) == 0)
+	if ((*stack)->n < 0 || (*stack)->n > 127)
 	{
 		printerr(line_number, "can't pchar, value out of range");
 		return;
@@ -33,23 +33,23 @@ void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 
-	if (!stack || !*stack)
+	if (!stack || !*stack ||  line_number == 0)
 	{
-		puts("");
+		printf("\n");
 		return;
 	}
 
 	tmp = *stack;
 	while (tmp)
 	{
-		if (isascii(tmp->n) == 0 || tmp->n == 0)
+		if (tmp->n < 0 || tmp->n > 127 || tmp->n == 0)
 		{
 			break;
 		}
 		printf("%c", tmp->n);
 		tmp = tmp->next;
 	}
-	puts("");
+	printf("\n");
 }
 
 /**
@@ -62,7 +62,7 @@ void rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 
-	if (!stack || !*stack || !(*stack)->next)
+	if (!stack || !*stack || !(*stack)->next ||  line_number == 0)
 	{
 		return;
 	}
@@ -89,7 +89,7 @@ void rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp, *tmp2;
 
-	if (!stack || !*stack || !(*stack)->next)
+	if (!stack || !*stack || !(*stack)->next || line_number == 0)
 	{
 		return;
 	}

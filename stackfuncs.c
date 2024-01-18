@@ -19,7 +19,7 @@ void push(stack_t **stack, char **cmd, unsigned int line_number, int is_stack)
 	}
 	else
 	{
-		exiterr(stack, line_number, "usage: push integer");
+		printerr(line_number, "usage: push integer");
 	}
 }
 
@@ -34,7 +34,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	delete_node_head(stack);
 	if (status < 0)
 	{
-		exiterr(stack, line_number, "can't pop an empty stack");
+		printerr(line_number, "can't pop an empty stack");
 	}
 }
 
@@ -47,6 +47,10 @@ void pop(stack_t **stack, unsigned int line_number)
 void print_stack(stack_t **stack, unsigned int line_number)
 {
 	print_list(*stack);
+	if (status < 0)
+	{
+		printerr(line_number, "Unknown error");
+	}
 }
 
 /**
@@ -59,7 +63,7 @@ void print_head(stack_t **stack, unsigned int line_number)
 {
 	if (!stack || !*stack)
 	{
-		exiterr(stack, line_number, "can't pint, stack empty");
+		printerr(line_number, "can't pint, stack empty");
 	}
 	printf("%d\n", (*stack)->n);
 }

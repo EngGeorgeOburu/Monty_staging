@@ -35,7 +35,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	tmp = *stack;
 	if (!tmp || !tmp->next)
 	{
-		exiterr(stack, line_number, "can't swap, stack too short");
+		printerr(line_number, "can't swap, stack too short");
 		return;
 	}
 	tmp->prev = tmp->next;
