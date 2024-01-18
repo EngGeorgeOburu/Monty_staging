@@ -49,36 +49,3 @@ void swap(stack_t **stack, unsigned int line_number)
 
 	*stack = tmp->prev;
 }
-
-/**
- * add - sum top 2 elts of stack and place res at head, now size - 1
- * @stack: ptr ptr to stack
- * @line_number: num of line where this func is called
- * Return: nothing
- */
-void add(stack_t **stack, unsigned int line_number)
-{
-	stack_t *tmp;
-	int sum;
-
-	tmp = *stack;
-	if (!tmp || ! tmp->next)
-	{
-		exiterr(stack, line_number, "can't add, stack too short");
-		return;
-	}
-	sum = tmp->n + tmp->next->n;
-	pop(stack, line_number);
-	(*stack)->n = sum;
-}
-
-/**
- * nop - do nothing
- * @stack: ptr ptr to stack
- * @line_number: num of line where this func is called
- * Return: nothing
- */
-void nop(stack_t **stack, unsigned int line_number)
-{
-	printf("Implement it yourself\n");
-}

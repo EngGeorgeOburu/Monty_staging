@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
+#include <ctype.h>
 
 extern int status;
 
@@ -70,16 +71,31 @@ void free_stack(stack_t *stack);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
 
 /* print error msg */
-int printerr(const char *msg, int status);
+int printerr(unsigned int line_number, const char *msg);
 void exiterr(stack_t **stack, unsigned int line_number, const char *msg);
 
 /* linked list functions */
 size_t print_list(stack_t *h);
 stack_t *add_node_head(stack_t **head, int n);
 int delete_node_head(stack_t **head);
+
+/* monty math module */
+void add(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void divide(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+
+/* monty module for operations on chars and str */
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
+
+
+
 
 
 #endif

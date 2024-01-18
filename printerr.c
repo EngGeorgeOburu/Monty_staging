@@ -6,11 +6,10 @@
  * @status: error status code
  * Return: status code of the err
  */
-int printerr(const char *msg, int status)
+int printerr(unsigned int line_number, const char *msg)
 {
-	dprintf(STDERR_FILENO, "%s", msg);
-
-	return (status);
+	dprintf(STDERR_FILENO, "L%u: %s\n", line_number, msg);
+	status = 1;
 }
 
 /**
@@ -22,9 +21,6 @@ int printerr(const char *msg, int status)
  */
 void exiterr(stack_t **stack, unsigned int line_number, const char *msg)
 {
-	//free_stack(*stack);
 	dprintf(STDERR_FILENO, "L%u: %s\n", line_number, msg);
-	//fclose(stream);
-	//exit(EXIT_FAILURE);
 	status = 1;
 }

@@ -21,8 +21,6 @@ int gettoksnum(char *line, int size, char *delim)
 	tok = strtok(cpstr, delim);
 	while (tok != NULL)
 	{
-		if (tok[0] == '#')
-			break;
 		tok = strtok(NULL, delim);
 		toksnum++;
 	}
@@ -55,8 +53,6 @@ char **_strtok(char *line, int size, char *delim)
 	i = 0;
 	while (tok != NULL)
 	{
-		if (tok[0] == '#')
-			break;
 		toks[i] = _strdup(tok);
 		if (!toks[i])
 		{
